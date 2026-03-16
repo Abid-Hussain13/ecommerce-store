@@ -115,7 +115,6 @@ const Navbar: React.FC = () => {
           <div className={`absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold/5 blur-[120px] transition-transform duration-1000 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`} />
 
           <nav className="relative z-10 flex flex-col items-center space-y-10">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-gold/60 mb-4 block">Navigation</span>
             {[{ name: 'Home', path: '/' }, ...navLinks].map((link, idx) => (
               <Link
                 key={link.path}
