@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-darkbg text-cream font-dm antialiased selection:bg-gold selection:text-darkbg;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-gold text-darkbg px-8 py-3 font-dm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-opacity-90 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply border border-gold text-gold px-8 py-3 font-dm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-gold hover:text-darkbg active:scale-95;
+  }
+
+  /* Reveal animations - improved with safety fallback */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  /* If JS fails or user scrolls fast, we still want to see some content eventually */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal.revealed,
+  .revealed .reveal,
+  .revealed.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  @media (max-width: 1024px) {
+    .revealed-mobile,
+    .revealed-mobile .reveal {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  }
+  
+
+  /* Marquee ticker animation */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 60s linear infinite;
+  }
+
+  @media (max-width: 768px) {
+    .animate-marquee {
+      animation-duration: 80s;
+    }
+  }
+
+  /* Custom noise texture */
+  .noise-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  /* Diagonal lines pattern */
+  .diagonal-lines {
+    background-image: linear-gradient(45deg, #c9a84c 2.5%, transparent 2.5%, transparent 50%, #c9a84c 50%, #c9a84c 52.5%, transparent 52.5%, transparent 100%);
+    background-size: 40px 40px;
+    opacity: 0.03;
+  }
+}
+
+/* Page transitions */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
