@@ -51,7 +51,7 @@ const FeaturedCategories: React.FC = () => {
                   </h3>
                 </div>
                 <div className="w-10 h-10 md:w-14 md:h-14 border border-gold/30 rounded-full flex items-center justify-center transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700 delay-200 bg-darkbg/50 backdrop-blur-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" md:width="24" md:height="24" fill="none" stroke="#c9a84c" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="transform rotate-[-45deg]"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"  fill="none" stroke="#c9a84c" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="transform rotate-[-45deg]"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
               </div>
 
